@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Current Coordinate</title>
+</head>
+
+<body>
+    <h1>Current Coordinate:</h1>
+    Latitude: <%= currentPoint.lat %><br>
+        Longitude: <%= currentPoint.lng %>
+            <script src="/socket.io/socket.io.js"></script>
+            <script>
+                const socket = io();
+                socket.on("updateCurrentPoint", point => {
+                    document.querySelector("h1").innerHTML = `Current Coordinate:<br>Latitude: ${point.lat}<br>Longitude: ${point.lng}`;
+                });
+            </script>
+</body>
+
+</html>
